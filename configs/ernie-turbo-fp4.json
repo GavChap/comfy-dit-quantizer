@@ -1,0 +1,17 @@
+{
+  "format": "comfy_quant",
+  "block_names": [
+    "layers.",
+    "model.diffusion_model.",
+    "final_linear",
+    "final_norm"
+  ],
+  "rules": [
+    {
+      "policy": "nvfp4",
+      "match": [
+        ""
+      ]
+    }
+  ]
+}

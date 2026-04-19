@@ -50,7 +50,8 @@ def sample_block16(w, n, include_absmax=True):
     return x16[ridx, bidx].float()
 
 
-def scale_mse_nvfp4(w, n_samples=NUM_SAMPLE_DEFAULT, ratios=(0.90, 0.95, 0.975, 1.0, 1.025, 1.05, 1.10)):
+def scale_mse_nvfp4(w, n_samples=NUM_SAMPLE_DEFAULT, dense_search=False):
+    ratios = tuple(0.65 + 0.0125 * i for i in range(49)) if dense_search else (0.90, 0.95, 0.975, 1.0, 1.025, 1.05, 1.10)
     x = sample_block16(w, n_samples) if n_samples != None else w.float()
     if x.numel() == 0 :
         return w.new_tensor(0.0, dtype=torch.float32)

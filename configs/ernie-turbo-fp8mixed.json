@@ -1,0 +1,24 @@
+{
+  "format": "comfy_quant",
+  "block_names": [
+    "layers.",
+    "model.diffusion_model.",
+    "model.",
+    "transformer.",
+    "block."
+  ],
+  "rules": [
+    {
+      "policy": "keep",
+      "match": [
+        "self_attention"
+      ]
+    },
+    {
+      "policy": "float8_e4m3fn",
+      "match": [
+        ""
+      ]
+    }
+  ]
+}

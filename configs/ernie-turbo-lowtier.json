@@ -1,0 +1,36 @@
+{
+  "format": "comfy_quant",
+  "block_names": [
+    "layers.",
+    "model.diffusion_model.",
+    "final_linear",
+    "final_norm"
+  ],
+  "rules": [
+    {
+      "policy": "keep",
+      "match": [
+        "final_linear",
+        "final_norm",
+        "self_attention",
+        "layers.0.",
+        "layers.35."
+      ]
+    },
+    {
+      "policy": "float8_e4m3fn",
+      "match": [
+        "layers.1.",
+        "layers.2.",
+        "layers.33.",
+        "layers.34."
+      ]
+    },
+    {
+      "policy": "nvfp4",
+      "match": [
+        ""
+      ]
+    }
+  ]
+}
